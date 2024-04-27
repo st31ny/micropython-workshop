@@ -21,8 +21,10 @@ paginate: true
 1. Hello World
 — Pause —
 1. Sprachkonstrukte und Sensoren
+1. Netzwerk
 — Pause —
-1. 
+1. Projekt
+1. Zusammenfassung
 
 ---
 
@@ -34,11 +36,16 @@ footer: Unser Universum
 
 ---
 
-
-* Raspberry Pi
-* Home Assistant
+<!--
 * ESP32
-* Python, MicroPython
+* Python
+* MicroPython
+* Home Assistant
+* Raspberry Pi
+--->
+
+![bg 70%](https://cdn.ttgtmedia.com/rms/onlineImages/iota-smart_home.jpg)
+<!-- Quelle: https://www.computerweekly.com/de/definition/Smart-Home -->
 
 ---
 
@@ -130,7 +137,7 @@ footer: Sprachkonstrukte und Sensoren
 
 ---
 
-## Buttonsteuerung
+## Buttonsteuerung (1)
 
 ```py
 from machine import Pin
@@ -152,10 +159,16 @@ Sprachkonstrukte:
 * Import
 * Funktion
 * Objekt
-* While-Schleife
+* While-Schleife => grundlegende Programmstruktur
 * If-Verzweigung (Bedingung, == Gleichheit)
 * Zuweisung
 -->
+
+---
+
+## Buttonsteuerung (2)
+
+
 
 ---
 
@@ -226,6 +239,7 @@ def alarm_blink(led):
 
 <!--
 Sprachkonstrukte:
+* eigene Funktion
 * for-Schleife
 -->
 
@@ -259,6 +273,26 @@ Sprachkonstrukte:
 
 ---
 
+## Temperatur und Luftfeuchtigkeit
+
+```py
+from machine import Pin
+from time import sleep
+import dht
+
+pin = Pin(4, Pin.IN, Pin.PULL_UP)
+sensor = dht.DHT22(pin)
+
+while True:
+    sensor.measure()
+    temp = sensor.temperature()
+    hum = sensor.humidity()
+    print(f"Temperatur: {temp}° C\nLuftfeuchte: {hum} %")
+    time.sleep(2)
+```
+
+---
+
 # Netzwerk
 
 <!--
@@ -267,3 +301,100 @@ footer: Netzwerk
 
 ---
 
+## WiFi-Verbindung herstellen
+
+```py
+from time import sleep
+import network
+
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+print(f"Connecting to network {WLAN_SSID!r}...")
+wlan.connect(WLAN_SSID, WLAN_PSK)
+while not wlan.isconnected():
+    sleep(0.1)
+print("network config:", wlan.ifconfig())
+```
+
+---
+
+## Daten abrufen
+
+```py
+# ...
+import requests
+import json
+# ...
+headers = {
+    'Accept': 'application/json',
+}
+r = requests.get(url, headers=headers)
+if r.status_code == 200:
+    data = r.json()
+```
+
+---
+
+## Daten senden
+
+```py
+# ...
+import requests
+import json
+# ...
+headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer 1234',
+}
+data = {
+    'hello': "World",
+}
+data_encoded = json.dumps(data).encode()
+r = requests.get(url, data=data_encoded, headers=headers)
+if r.status_code == 200:
+    data = r.json()
+```
+
+---
+
+# Pause
+
+---
+
+# Projekt
+
+<!--
+footer: Projekt
+-->
+
+---
+
+## Aufgabe
+
+Ein Wassorsensor und eine Luftfeuchtesensor sollen überwacht werden. Wenn der Wassersensor Wasser detektiert oder die Luftfeuchtigkeit auf über 70 % steigt, soll ein App-Alarm ausgelöst werden.
+
+---
+
+# Zusammenfassung
+
+<!--
+footer: Zusammenfassung
+-->
+
+---
+
+## Zusammenfassung
+
+- flache Lernkurve
+- Code schnell ausprobieren
+- Vielzahl an Sensoren
+- Integration in andere Systeme
+
+---
+
+# Vielen Dank
+
+<!--
+footer:
+-->
