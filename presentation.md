@@ -71,6 +71,10 @@ https://github.com/st31ny/micropython-workshop
     - dazu USB-Kabel, Sensoren, Breadboard
 - 3er Gruppen mit einem Laptop und einem Bausatz
 
+<!--
+später: Messgerät, passende Sensoren, Lötkolben
+-->
+
 ---
 
 ## Einrichtung
