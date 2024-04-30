@@ -9,6 +9,7 @@ Dank der Sprache MicroPython ist die Programmierung von Mikrocontrollern so einf
 Links
 -----
 
+* [Präsentation zum Workshop](https://st31ny.github.io/micropython-workshop)
 * [ESP32-C3 SuperMini eBay](https://www.ebay.de/itm/285630123712)
 * [ESP32-Modellübersicht](https://www.espressif.com/en/products/socs)
 * [Datenblatt ESP32 Mini](https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf)
