@@ -289,7 +289,7 @@ hum = sensor.humidity()
 
 ---
 
-## Temperatur und Luftfeuchtigkeit (1)
+## Temperatur und Luftfeuchtigkeit (2)
 
 ```py
 # ...

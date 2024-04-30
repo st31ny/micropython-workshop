@@ -74,3 +74,8 @@ Codebeispiele
 -------------
 
 Siehe Ordner `code` für kommentierte Codeschnipsel für bestimmte Sensoren.
+
+Pin-Out
+-------
+
+![](https://www.nologo.tech/assets/img/esp32/esp32c3supermini/esp32c3foot1.png)
