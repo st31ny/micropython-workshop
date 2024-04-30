@@ -137,7 +137,7 @@ footer: Sprachkonstrukte und Sensoren
 
 ---
 
-## Buttonsteuerung (1)
+## Buttonsteuerung
 
 ```py
 from machine import Pin
@@ -163,12 +163,6 @@ Sprachkonstrukte:
 * If-Verzweigung (Bedingung, == Gleichheit)
 * Zuweisung
 -->
-
----
-
-## Buttonsteuerung (2)
-
-
 
 ---
 
@@ -228,6 +222,7 @@ Sprachkonstrukte:
 
 - funktioniert wie ein Potentiometer
 * **TODO**: LED fünfmal schnell blinken lassen, wenn Wasser erkannt wird
+* **Bonus**: Blinkfrequenz in Abhängigkeit von der Wassermenge
 ```py
 # ...
 def alarm_blink(led):
@@ -273,23 +268,46 @@ Sprachkonstrukte:
 
 ---
 
-## Temperatur und Luftfeuchtigkeit
+## Temperatur und Luftfeuchtigkeit (1)
+
+- mit Sensor DHT-22
+- Sensor kann nur im 2-Sekunden-Takt abgefragt werden
 
 ```py
-from machine import Pin
-from time import sleep
 import dht
-
-pin = Pin(4, Pin.IN, Pin.PULL_UP)
+# ...
+# Daten-PIN mit Pull-Up
 sensor = dht.DHT22(pin)
+# ...
+sensor.measure()
+temp = sensor.temperature()
+hum = sensor.humidity()
+```
 
-while True:
+* **TODO**: lese Temperatur und Luftfeuchtigkeit in einer Funktion und gib beides "hübsch" aus
+* Hinweis: Funktionen können (mehrere) Rückgabewerte haben
+
+---
+
+## Temperatur und Luftfeuchtigkeit (1)
+
+```py
+# ...
+def weather():
     sensor.measure()
     temp = sensor.temperature()
     hum = sensor.humidity()
+    return temp, hum
+while True:
+    temp, hum = weather()
     print(f"Temperatur: {temp}° C\nLuftfeuchte: {hum} %")
     time.sleep(2)
 ```
+
+<!--
+Sprachkonstrukte:
+* Funktion mit Rückgabewert
+-->
 
 ---
 
