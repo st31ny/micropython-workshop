@@ -110,7 +110,7 @@ footer: Hello World
 ---
 
 - Skriptbereich > Speichern > MicroPython device > "main.py"
-* Eingabe:
+- Eingabe:
 ```py
 from machine import Pin
 from time import sleep

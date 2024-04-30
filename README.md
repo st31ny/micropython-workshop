@@ -70,3 +70,7 @@ while True:
 * Start per RST-Button (oder Strg+D)
 * zum Beenden: 🛑 (Strg+F2)
 
+Codebeispiele
+-------------
+
+Siehe Ordner `code` für kommentierte Codeschnipsel für bestimmte Sensoren.
