@@ -10,7 +10,7 @@ class: invert
 ---
 
 <!--
-header: Workshop Micropython\n28.04.2024
+header: Workshop Micropython\n01.05.2024
 paginate: true
 -->
 
