@@ -373,7 +373,7 @@ data = {
     'hello': "World",
 }
 data_encoded = json.dumps(data).encode()
-r = requests.get(url, data=data_encoded, headers=headers)
+r = requests.post(url, data=data_encoded, headers=headers)
 if r.status_code == 200:
     data = r.json()
 ```
