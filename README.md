@@ -1,6 +1,5 @@
-Smart Home selbstgemacht
-========================
-~ Einstieg in die Programmierung mit MicroPython ~
+Einstieg in die Programmierung von Microcontrollern mit MicroPython
+===================================================================
 
 Seit einigen Jahren gibt es diverse Smart-Home-Geräte am Markt, die sich leider allzu oft als Sicherheitslücke, Datenschleuder oder — nach der Pleite der Firmen — teure Briefbeschwerer herausstellen. Grund genug, die Sache selbst in die Hand zu nehmen!
 

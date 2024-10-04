@@ -4,20 +4,18 @@ theme: default
 class: invert
 ---
 
-# Smart Home selbstgemacht
-— Einstieg in die Programmierung mit MicroPython —
+# Einstieg in die Programmierung von Microcontrollern mit MicroPython
 
 ---
 
 <!--
-header: Workshop Micropython\n01.05.2024
+header: Workshop MicroPython\n05.10.2024
 paginate: true
 -->
 
 ## Agenda
 
-1. Unser Universum
-1. Unsere Toolchain
+1. Universum und Toolchain
 1. Hello World
 — Pause —
 1. Sprachkonstrukte und Sensoren
@@ -28,32 +26,19 @@ paginate: true
 
 ---
 
-# Unser Universum
+# Universum und Toolchain
 
 <!--
-footer: Unser Universum
+footer: Universum und Toolchain
 -->
 
 ---
 
-<!--
-* ESP32
-* Python
-* MicroPython
-* Home Assistant
-* Raspberry Pi
---->
+## Begriffe
 
-![bg 70%](https://cdn.ttgtmedia.com/rms/onlineImages/iota-smart_home.jpg)
-<!-- Quelle: https://www.computerweekly.com/de/definition/Smart-Home -->
-
----
-
-# Toolchain
-
-<!--
-footer: Toolchain
--->
+- Microcontroller — ESP32
+- Chip — Board
+- Python — MicroPython
 
 ---
 
@@ -127,6 +112,10 @@ while True:
 * Start per RST-Button
 * zum Beenden: 🛑 (Strg+F2)
 
+<!--
+LED nochmal einzeln zeigen => Konzept Active Low vs. Active High
+-->
+
 ---
 
 # Pause
@@ -166,6 +155,8 @@ Sprachkonstrukte:
 * While-Schleife => grundlegende Programmstruktur
 * If-Verzweigung (Bedingung, == Gleichheit)
 * Zuweisung
+
+Was ist ein Pull-Up/Down?
 -->
 
 ---
