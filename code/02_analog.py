@@ -13,6 +13,6 @@ while True:
     # rechne um auf Duty-Cycle PWM (0..2**10)
     led_duty = pot_val / 2**6
     # konvertiere nach int und setze
-    led.duty(int(new_val))
+    led.duty(int(led_duty))
 
     sleep(0.1)

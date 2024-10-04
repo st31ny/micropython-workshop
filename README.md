@@ -1,6 +1,5 @@
-Smart Home selbstgemacht
-========================
-~ Einstieg in die Programmierung mit MicroPython ~
+Einstieg in die Programmierung von Microcontrollern mit MicroPython
+===================================================================
 
 Seit einigen Jahren gibt es diverse Smart-Home-Geräte am Markt, die sich leider allzu oft als Sicherheitslücke, Datenschleuder oder — nach der Pleite der Firmen — teure Briefbeschwerer herausstellen. Grund genug, die Sache selbst in die Hand zu nehmen!
 
@@ -9,6 +8,7 @@ Dank der Sprache MicroPython ist die Programmierung von Mikrocontrollern so einf
 Links
 -----
 
+* [Präsentation zum Workshop](https://st31ny.github.io/micropython-workshop)
 * [ESP32-C3 SuperMini eBay](https://www.ebay.de/itm/285630123712)
 * [ESP32-Modellübersicht](https://www.espressif.com/en/products/socs)
 * [Datenblatt ESP32 Mini](https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf)
@@ -17,6 +17,7 @@ Links
 * [Firmware](https://www.micropython.org/download/ESP32_GENERIC_C3/)
 * [Dokumentation MicroPython](https://docs.micropython.org/en/latest/esp32/quickref.html)
 * [Thonny-IDE](https://thonny.org/)
+* [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/)
 * Tutorials
     * [Getting started](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/)
     * [MicroPython/Python basics](https://randomnerdtutorials.com/micropython-programming-basics-esp32-esp8266/)
@@ -24,6 +25,8 @@ Links
 
 Firmwareinstallation
 --------------------
+
+Bevor MicroPython genutzt werden kann, muss es auf dem Chip installiert werden. Dieser Vorgang wird als "Flashen" bezeichnet und kann entweder mit dem esptool oder mit Thonny gemacht werden. Dafür wird eine zum Chip passende Firmwaredatei für MicroPython benötigt.
 
 * per esptool
 ```
