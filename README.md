@@ -1,15 +1,14 @@
-Einstieg in die Programmierung von Microcontrollern mit MicroPython
-===================================================================
+Programmierung von Embedded Systems mit MicroPython
+===================================================
 
 Seit einigen Jahren gibt es diverse Smart-Home-Geräte am Markt, die sich leider allzu oft als Sicherheitslücke, Datenschleuder oder — nach der Pleite der Firmen — teure Briefbeschwerer herausstellen. Grund genug, die Sache selbst in die Hand zu nehmen!
 
-Dank der Sprache MicroPython ist die Programmierung von Mikrocontrollern so einfach wie nie zuvor. In diesem Workshop werden wir erste Schritte mit MicroPython auf dem verbreiteten ESP32-Chip wagen und kleine nützliche Projekte zur Automatisierung der eigenen vier Wände realisieren (z. B. einen Wassersensor und ein Thermometer).
+Dank der Sprache MicroPython ist die Programmierung von Mikrocontrollern so einfach wie nie zuvor. In diesem Workshop werden wir erste Schritte mit MicroPython auf dem verbreiteten ESP32-Chip wagen und kleine nützliche Projekte zur Automatisierung der eigenen vier Wände realisieren (z. B. einen Wassersensor, ein Thermometer und ein Display).
 
 Links
 -----
 
 * [Präsentation zum Workshop](https://st31ny.github.io/micropython-workshop)
-* [ESP32-C3 SuperMini eBay](https://www.ebay.de/itm/285630123712)
 * [ESP32-Modellübersicht](https://www.espressif.com/en/products/socs)
 * [Datenblatt ESP32 Mini](https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf)
 * [Pinout](https://www.nologo.tech/assets/img/esp32/esp32c3supermini/esp32c3foot1.png)
@@ -18,6 +17,15 @@ Links
 * [Dokumentation MicroPython](https://docs.micropython.org/en/latest/esp32/quickref.html)
 * [Thonny-IDE](https://thonny.org/)
 * [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/)
+* Hardware
+    * [ESP32-C3 SuperMini](https://www.ebay.de/itm/157669215579)
+    * [Elektronik-Bastelkiste ELEGOO Upgraded Elektronics Fun Kit](https://www.amazon.de/-/dp/B01M7N4WB6)
+    * [Wassersensor](https://www.ebay.de/itm/376829936950)
+    * [Display SSD1306 I2C/IIC](https://www.ebay.de/itm/177392745668)
+    * [Ultraschall HC-SR04](https://www.ebay.de/itm/185904806389)
+    * [Radar RCWL-0516](https://www.ebay.de/itm/153308558247)
+    * [Temperatur/Druck BMP280](https://www.ebay.de/itm/317569138885)
+    * [Temperatur/Feuchtigkeit DHT22](https://www.ebay.de/itm/317454484565)
 * Tutorials
     * [Getting started](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/)
     * [MicroPython/Python basics](https://randomnerdtutorials.com/micropython-programming-basics-esp32-esp8266/)
@@ -31,22 +39,22 @@ Bevor MicroPython genutzt werden kann, muss es auf dem Chip installiert werden. 
 * per esptool
 ```
 esptool --chip esp32c3 --port /dev/ttyACM0 erase_flash
-esptool --chip esp32c3 --port /dev/ttyACM0 --baud 460800 write_flash -z 0x0 ESP32_GENERIC_C3-20240222-v1.22.2.bin
+esptool --chip esp32c3 --port /dev/ttyACM0 --baud 460800 write_flash -z 0x0 ESP32_GENERIC_C3-xxx.bin
 ```
 * per Thonny:
-    * unter Extras > Optionen > Interpreter
+    * unter Werkzeuge > Optionen > Interpreter
     * Auswahl Interpreter: "MicroPython (ESP32)"
     * "MicroPython installieren oder aktualisieren"
 
 Einrichtung Thonny IDE/Firmwareinstallation
 -------------------------------------------
 
-* öffne Extras > Optionen > Interpreter
+* öffne Werkzeuge > Optionen > Interpreter
 * Auswahl Interpreter: "MicroPython (ESP32)"
 * Auswahl Port
 * "OK"
-
 * in der "Kommondozeile": `help()`
+    * Hier sollte eine lange Hilfe kommen, die mit "Welcome to MicroPython on the ESP32!" beginnt.
 
 Hello World mit LED
 -------------------
