@@ -320,6 +320,69 @@ Sprachkonstrukte:
 
 ---
 
+## Temperatur, Luftdruck und Höhe (1)
+
+- mit Sensor BMP-280
+- basierend auf I2C
+
+```py
+import machine
+
+i2c = machine.I2C(0)
+i2c.scan()
+i2c.readfrom(118, 240)
+```
+
+<!--
+Sprachkonstrukte:
+* externe Bibliothek
+
+Hardware:
+* I2C
+* BMP280
+-->
+
+---
+
+## Temperatur, Luftdruck und Höhe (2)
+
+- Berechnung etwas komplex -> extra Bibliothek
+
+```py
+# ...
+import bme280
+sensor = bme280.BME280(i2c=i2c)
+
+while True:
+    print(f"Temperatur: {sensor.temperature}\nDruck: {sensor.pressure}")
+    time.sleep(2)
+```
+
+* **TODO**: berechne die Höhe über dem Meer
+* Hinweis 1: `sensor.read_pressure()` gibt den Druck in Pascal
+* Hinweis 2: nutze die Barometrische Höhenformel bzw. Internationale Höhenformel
+
+---
+
+## Temperatur, Luftdruck und Höhe (3)
+
+```py
+# ...
+def altitude(temp, pres):
+    t = 273.15 + temp
+    p0 = 1013.25
+    return t/0.0065*(1-(pres/p0)**(1/5.255))
+
+while True:
+    t = sensor.read_temperature() / 100
+    p = sensor.read_pressure() / 256 / 100
+    alt = altitude(t, p)
+    print(f"Höhe: {alt:.1f} m")
+    time.sleep(2)
+```
+
+---
+
 # Netzwerk
 
 <!--

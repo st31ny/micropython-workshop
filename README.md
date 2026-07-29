@@ -26,13 +26,15 @@ Links
     * [Display SSD1306 I2C/IIC](https://www.ebay.de/itm/177392745668)
     * [Ultraschall HC-SR04](https://www.ebay.de/itm/185904806389)
     * [Radar RCWL-0516](https://www.ebay.de/itm/153308558247)
-    * [Temperatur/Druck BMP280](https://www.ebay.de/itm/317569138885)
     * [Temperatur/Feuchtigkeit DHT-22](https://www.ebay.de/itm/317454484565)
+    * [Temperatur/Druck BMP280](https://www.ebay.de/itm/317569138885)
+        * [Bibliothek für den Sensor](https://github.com/RuiSantosdotme/ESP-MicroPython/blob/master/code/WiFi/HTTP_Client_IFTTT_BME280/BME280.py)
 * Tutorials
     * [Getting started](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/)
     * [MicroPython/Python basics](https://randomnerdtutorials.com/micropython-programming-basics-esp32-esp8266/)
     * [GPIO](https://randomnerdtutorials.com/micropython-gpios-esp32-esp8266/)
     * [DHT-22](https://randomnerdtutorials.com/esp32-esp8266-dht11-dht22-micropython-temperature-humidity-sensor/)
+    * [BME280](https://randomnerdtutorials.com/micropython-sensor-readings-email-esp32-esp826/)
 
 Firmwareinstallation
 --------------------
