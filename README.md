@@ -20,16 +20,19 @@ Links
 * Hardware
     * [ESP32-C3 SuperMini](https://www.ebay.de/itm/157669215579)
     * [Elektronik-Bastelkiste ELEGOO Upgraded Elektronics Fun Kit](https://www.amazon.de/-/dp/B01M7N4WB6)
+        * [LED-Vorwiderstandsrechner](https://www.elektronik-kompendium.de/sites/bau/1109111.htm)
+        * [Widerstandsfarbcode](https://www.elektronik-kompendium.de/sites/bau/1109051.htm)
     * [Wassersensor](https://www.ebay.de/itm/376829936950)
     * [Display SSD1306 I2C/IIC](https://www.ebay.de/itm/177392745668)
     * [Ultraschall HC-SR04](https://www.ebay.de/itm/185904806389)
     * [Radar RCWL-0516](https://www.ebay.de/itm/153308558247)
     * [Temperatur/Druck BMP280](https://www.ebay.de/itm/317569138885)
-    * [Temperatur/Feuchtigkeit DHT22](https://www.ebay.de/itm/317454484565)
+    * [Temperatur/Feuchtigkeit DHT-22](https://www.ebay.de/itm/317454484565)
 * Tutorials
     * [Getting started](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/)
     * [MicroPython/Python basics](https://randomnerdtutorials.com/micropython-programming-basics-esp32-esp8266/)
     * [GPIO](https://randomnerdtutorials.com/micropython-gpios-esp32-esp8266/)
+    * [DHT-22](https://randomnerdtutorials.com/esp32-esp8266-dht11-dht22-micropython-temperature-humidity-sensor/)
 
 Firmwareinstallation
 --------------------

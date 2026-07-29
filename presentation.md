@@ -4,12 +4,12 @@ theme: default
 class: invert
 ---
 
-# Einstieg in die Programmierung von Microcontrollern mit MicroPython
+# Programmierung von Embedded Systems mit MicroPython
 
 ---
 
 <!--
-header: Workshop MicroPython\n05.10.2024
+header: Workshop MicroPython\nAugust 2026
 paginate: true
 -->
 
@@ -54,7 +54,7 @@ https://github.com/st31ny/micropython-workshop
     - Download unter https://thonny.org
 - ESP32-C3 SuperMini
     - dazu USB-Kabel, Sensoren, Breadboard
-- 3er Gruppen mit einem Laptop und einem Bausatz
+- 2er Gruppen oder allein mit einem Laptop und einem Bausatz
 
 <!--
 später: Messgerät, passende Sensoren, Lötkolben
@@ -68,7 +68,7 @@ später: Messgerät, passende Sensoren, Lötkolben
 - Rechner per USB mit Chip verbinden
 - Thonny starten
 - Ersteinrichtung für MicroPython:
-    - Extras > Optionen > Interpreter
+    - Werkzeuge > Optionen > Interpreter
     - Auswahl Interpreter: "MicroPython (ESP32)"
     - Auswahl Port
     - "OK"
@@ -156,7 +156,9 @@ Sprachkonstrukte:
 * If-Verzweigung (Bedingung, == Gleichheit)
 * Zuweisung
 
-Was ist ein Pull-Up/Down?
+Hardware:
+* Button
+* Was ist ein Pull-Up/Down?
 -->
 
 ---
@@ -175,7 +177,7 @@ pot = ADC(Pin(2), atten=ADC.ATTN_11DB)
 pot.read_u16() # gib Wert (0..65536)
 
 # PWM mit 5 kHz auf Pin 8
-led = PWM(Pin(8), freq=5000)
+led = PWM(Pin(0), freq=5000)
 led.duty(512) # setze analogen Wert (0..1024)
 
 # TODO: Dimme LED mit Poti.
@@ -185,6 +187,9 @@ led.duty(512) # setze analogen Wert (0..1024)
 Sprachkonstrukte:
 * Kommentare
 * benannte Parameter
+
+Hardware:
+* LED mit Vorwiderstand
 -->
 
 ---
@@ -231,6 +236,9 @@ def alarm_blink(led):
 Sprachkonstrukte:
 * eigene Funktion
 * for-Schleife
+
+Hardware:
+* Wassersensor
 -->
 
 ---
@@ -281,6 +289,12 @@ hum = sensor.humidity()
 
 * **TODO**: lese Temperatur und Luftfeuchtigkeit in einer Funktion und gib beides "hübsch" aus
 * Hinweis: Funktionen können (mehrere) Rückgabewerte haben
+
+<!--
+Hardware:
+* DHT-22 und Familie
+-->
+
 
 ---
 
