@@ -313,6 +313,84 @@ Sprachkonstrukte:
 
 ---
 
+## Ultraschallsensor (1)
+
+- Messung Abstand (2 cm .. 4 m) mit Schallimpuls und Laufzeitmessung
+- Trigger-Pin als Ausgang: High-Impuls für 10 μs
+- Echo-Pin als Eingang: Messung mit `machine.time_pulse_us()`
+- Nutzung einer Klasse:
+
+```py
+class HCSR04:
+    _SOUND_SPEED = 343.2
+    def __init__(self, trigger_pin, echo_pin):
+        self._trigger = Pin(trigger_pin, mode=Pin.OUT)
+    def distance_mm(self):
+        # ...
+        return 42
+```
+
+* **TODO**: Implementierung Klasse und sekündliche Ausgabe des Abstands
+
+<!--
+Sprachkonstrukte:
+* Klassen
+* Zeitmessung
+
+Hardware:
+* Ultraschall
+-->
+
+---
+
+## Ultraschallsensor (2)
+
+```py
+# ...
+class HCSR04:
+    _SOUND_SPEED = 0.34320 # mm/μs
+    _MAX_RANGE = 4000 # mm
+
+    def __init__(self, trigger_pin, echo_pin):
+        self._trigger = machine.Pin(trigger_pin, machine.Pin.OUT)
+        self._trigger.value(0)
+        self._echo = machine.Pin(echo_pin, machine.Pin.IN)
+
+    def distance_mm(self):
+        self._trigger.value(0)
+        time.sleep_us(5)
+
+        self._trigger.value(1)
+        time.sleep_us(10)
+        self._trigger.value(0)
+
+        timeout_us = 2 * self._MAX_RANGE / self._SOUND_SPEED
+        pulse_time = machine.time_pulse_us(self._echo, 1, timeout_us)
+        assert pulse_time > 0
+
+        return pulse_time * self._SOUND_SPEED / 2
+```
+
+<!--
+_footer: ""
+-->
+
+---
+
+## Ultraschallsensor (3)
+
+```py
+# ...
+sensor = HCSR04(trigger_pin=5, echo_pin=6)
+
+while True:
+    distance = sensor.distance_mm()
+    print(f"Abstand: {distance*10:.1f} cm")
+    time.sleep(1)
+```
+
+---
+
 ## Temperatur und Luftfeuchtigkeit (1)
 
 - mit Sensor DHT-22
@@ -336,7 +414,6 @@ hum = sensor.humidity()
 Hardware:
 * DHT-22 und Familie
 -->
-
 
 ---
 

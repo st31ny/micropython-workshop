@@ -15,6 +15,7 @@ Links
     * in Software: GPIO-Nummern
 * [Firmware](https://www.micropython.org/download/ESP32_GENERIC_C3/)
 * [Dokumentation MicroPython](https://docs.micropython.org/en/latest/esp32/quickref.html)
+* [Dokumentation Python](https://docs.python.org/3/)
 * [Thonny-IDE](https://thonny.org/)
 * [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/)
 * Hardware
@@ -36,6 +37,7 @@ Links
     * [DHT-22](https://randomnerdtutorials.com/esp32-esp8266-dht11-dht22-micropython-temperature-humidity-sensor/)
     * [BME280](https://randomnerdtutorials.com/micropython-sensor-readings-email-esp32-esp826/)
     * [RCWL-0516](https://randomnerdtutorials.com/micropython-rcwl-0516-esp32-esp8266/)
+    * [HC-SR04](https://randomnerdtutorials.com/micropython-hc-sr04-ultrasonic-esp32-esp8266/)
 
 Firmwareinstallation
 --------------------
