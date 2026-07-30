@@ -496,7 +496,7 @@ while True:
     t = sensor.read_temperature() / 100
     p = sensor.read_pressure() / 256 / 100
     alt = altitude(t, p)
-    print(f"Höhe: {alt:.1f} m")
+    print(f"Temperatur: {t:.1f} °C\nDruck: {p:.1f} hPa\nHöhe: {alt:.1f} m")
     time.sleep(2)
 ```
 
