@@ -163,6 +163,48 @@ Hardware:
 
 ---
 
+## Radar (1)
+
+* funktioniert wie ein Button
+* Anschlüsse beachten:
+  - VIN — 5 V
+  - GND — GND
+  - OUT — GPIO (kein Pull-Up nötig)
+  - andere Pins nicht belegen
+* **TODO**: LED soll genau dann leuchten, wenn eine Bewegung erkannt wird
+* **Bonus**: Text ausgeben, wenn der Zustand sich ändert
+
+<!--
+Hardware:
+* Radarsensor
+* 5 V Versorgung
+-->
+
+---
+
+## Radar (2)
+
+```py
+# ...
+led = machine.Pin(8, machine.Pin.OUT)
+sensor = machine.Pin(10, machine.Pin.IN)
+state = 0
+while True:
+    if sensor.value():
+        led.value(0)
+        if state == 0:
+            print("Bewegung erkannt!")
+            state = 1
+    else:
+        led.value(1)
+        if state == 1:
+            print("Bewegung gestoppt!")
+            state = 0
+    time.sleep(0.1)
+```
+
+---
+
 ## Potentiometer und PWM (1)
 
 <!--

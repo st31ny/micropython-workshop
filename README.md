@@ -35,6 +35,7 @@ Links
     * [GPIO](https://randomnerdtutorials.com/micropython-gpios-esp32-esp8266/)
     * [DHT-22](https://randomnerdtutorials.com/esp32-esp8266-dht11-dht22-micropython-temperature-humidity-sensor/)
     * [BME280](https://randomnerdtutorials.com/micropython-sensor-readings-email-esp32-esp826/)
+    * [RCWL-0516](https://randomnerdtutorials.com/micropython-rcwl-0516-esp32-esp8266/)
 
 Firmwareinstallation
 --------------------
