@@ -9,27 +9,26 @@ class: invert
 ---
 
 <!--
-header: Workshop MicroPython\nAugust 2026
+header: MicroPython
 paginate: true
 -->
 
 ## Agenda
 
-1. Universum und Toolchain
-1. Hello World
-— Pause —
-1. Sprachkonstrukte und Sensoren
-1. Netzwerk
-— Pause —
-1. Projekt
-1. Zusammenfassung
+1. Hello Universe
+1. Grundlagen Sprache und IO
+1. Digitale Sensoren und Aktoren
+1. Netzwerk und Kommunikation
+1. Projekt: Jetzt seid ihr am Zug!
 
 ---
 
-# Universum und Toolchain
+# Hello Universe
+
+Begriffe, Werkzeuge, Hello World
 
 <!--
-footer: Universum und Toolchain
+header: MicroPython: Hello Universe
 -->
 
 ---
@@ -57,7 +56,7 @@ https://github.com/st31ny/micropython-workshop
 - 2er Gruppen oder allein mit einem Laptop und einem Bausatz
 
 <!--
-später: Messgerät, passende Sensoren, Lötkolben
+später: Messgerät, weitere Sensoren
 -->
 
 ---
@@ -90,13 +89,7 @@ später: Messgerät, passende Sensoren, Lötkolben
 
 ---
 
-# Hello World
-
-<!--
-footer: Hello World
--->
-
----
+## Hello World
 
 - Skriptbereich > Speichern > MicroPython device > "main.py"
 - Eingabe:
@@ -118,14 +111,13 @@ LED nochmal einzeln zeigen => Konzept Active Low vs. Active High
 
 ---
 
-# Pause
 
----
+# Grundlagen Sprache und IO
 
-# Sprachkonstrukte und Sensoren
+Buttons, LED, Radar, analoge Signale, Ultraschall
 
 <!--
-footer: Sprachkonstrukte und Sensoren
+header: MicroPython: Grundlagen Sprache und IO
 -->
 
 ---
@@ -165,8 +157,8 @@ Hardware:
 
 ## Radar (1)
 
-* funktioniert wie ein Button
-* Anschlüsse beachten:
+- funktioniert wie ein Button
+- Anschlüsse beachten:
   - VIN — 5 V
   - GND — GND
   - OUT — GPIO (kein Pull-Up nötig)
@@ -205,11 +197,15 @@ while True:
 
 ---
 
-## Potentiometer und PWM (1)
+## Potentiometer und Pulsweitenmodulation (1)
 
 <!--
 interne Referenzspannung 1.1 V
 -->
+
+- Messung von analogen Signalen per ADC
+- Ausgabe von analogen Signalen per PWM
+
 ```py
 from machine import Pin, ADC, PWM
 from time import sleep
@@ -236,7 +232,7 @@ Hardware:
 
 ---
 
-## Potentiometer und PWM (2)
+## Potentiometer und Pulsweitenmodulation (2)
 
 ```py
 from machine import Pin, ADC, PWM
@@ -316,9 +312,8 @@ Sprachkonstrukte:
 ## Ultraschallsensor (1)
 
 - Messung Abstand (2 cm .. 4 m) mit Schallimpuls und Laufzeitmessung
-- Trigger-Pin als Ausgang: High-Impuls für 10 μs
-- Echo-Pin als Eingang: Messung mit `machine.time_pulse_us()`
-- Nutzung einer Klasse:
+* Trigger-Pin als Ausgang: High-Impuls für 10 μs
+* Echo-Pin als Eingang: Messung mit `machine.time_pulse_us()`
 
 ```py
 class HCSR04:
@@ -388,6 +383,16 @@ while True:
     print(f"Abstand: {distance/10:.1f} cm")
     time.sleep(1)
 ```
+
+---
+
+# Digitale Sensoren und Aktoren
+
+Temperatur, Luftfeuchtigkeit, Luftdruck, Display
+
+<!--
+header: MicroPython: Digitale Sensoren und Aktoren
+-->
 
 ---
 
@@ -520,10 +525,12 @@ Hardware:
 
 ---
 
-# Netzwerk
+# Netzwerk und Kommunikation
+
+WiFi, Bluetooth, API, Webserver
 
 <!--
-footer: Netzwerk
+header: MicroPython: Netzwerk und Kommunikation
 -->
 
 ---
@@ -585,43 +592,24 @@ if r.status_code == 200:
 
 ---
 
-# Pause
+# Projekt: Jetzt seid ihr am Zug!
 
----
-
-# Projekt
+Lasst eurer Kreativität freien Lauf!
 
 <!--
-footer: Projekt
+header: MicroPython: Projekt: Jetzt seid ihr am Zug!
 -->
 
 ---
 
 ## Aufgabe
 
-Ein Wassorsensor und eine Luftfeuchtesensor sollen überwacht werden. Wenn der Wassersensor Wasser detektiert oder die Luftfeuchtigkeit auf über 70 % steigt, soll ein App-Alarm ausgelöst werden.
+#TODO
 
 ---
 
-# Zusammenfassung
+# The End
 
 <!--
-footer: Zusammenfassung
--->
-
----
-
-## Zusammenfassung
-
-- flache Lernkurve
-- Code schnell ausprobieren
-- Vielzahl an Sensoren
-- Integration in andere Systeme
-
----
-
-# Vielen Dank
-
-<!--
-footer:
+header: MicroPython
 -->

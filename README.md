@@ -13,6 +13,8 @@ Links
 * [Datenblatt ESP32 Mini](https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf)
 * [Pinout](https://www.nologo.tech/assets/img/esp32/esp32c3supermini/esp32c3foot1.png)
     * in Software: GPIO-Nummern
+    * LED: GPIO 8
+    * BOOT-Button: GPIO 9
 * [Firmware](https://www.micropython.org/download/ESP32_GENERIC_C3/)
 * [Dokumentation MicroPython](https://docs.micropython.org/en/latest/esp32/quickref.html)
 * [Dokumentation Python](https://docs.python.org/3/)
