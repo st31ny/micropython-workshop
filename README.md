@@ -25,11 +25,12 @@ Links
         * [Widerstandsfarbcode](https://www.elektronik-kompendium.de/sites/bau/1109051.htm)
     * [Wassersensor](https://www.ebay.de/itm/376829936950)
     * [Display SSD1306 I2C/IIC](https://www.ebay.de/itm/177392745668)
+        * [Bibliothek für das SSD1306](https://github.com/adafruit/micropython-adafruit-ssd1306/blob/master/ssd1306.py)
     * [Ultraschall HC-SR04](https://www.ebay.de/itm/185904806389)
     * [Radar RCWL-0516](https://www.ebay.de/itm/153308558247)
     * [Temperatur/Feuchtigkeit DHT-22](https://www.ebay.de/itm/317454484565)
     * [Temperatur/Druck BMP280](https://www.ebay.de/itm/317569138885)
-        * [Bibliothek für den Sensor](https://github.com/RuiSantosdotme/ESP-MicroPython/blob/master/code/WiFi/HTTP_Client_IFTTT_BME280/BME280.py)
+        * [Bibliothek für den BMP280](https://github.com/RuiSantosdotme/ESP-MicroPython/blob/master/code/WiFi/HTTP_Client_IFTTT_BME280/BME280.py)
 * Tutorials
     * [Getting started](https://randomnerdtutorials.com/getting-started-thonny-micropython-python-ide-esp32-esp8266/)
     * [MicroPython/Python basics](https://randomnerdtutorials.com/micropython-programming-basics-esp32-esp8266/)
@@ -38,6 +39,7 @@ Links
     * [BME280](https://randomnerdtutorials.com/micropython-sensor-readings-email-esp32-esp826/)
     * [RCWL-0516](https://randomnerdtutorials.com/micropython-rcwl-0516-esp32-esp8266/)
     * [HC-SR04](https://randomnerdtutorials.com/micropython-hc-sr04-ultrasonic-esp32-esp8266/)
+    * [SSD1306](https://randomnerdtutorials.com/micropython-ssd1306-oled-scroll-shapes-esp32-esp8266/)
 
 Firmwareinstallation
 --------------------

@@ -502,6 +502,24 @@ while True:
 
 ---
 
+## Display (1)
+
+- mit Display SSD1306
+- basierend auf I2C
+
+#TODO
+
+<!--
+Sprachkonstrukte:
+* Vererbung
+
+Hardware:
+* SPI
+* SSD1306
+-->
+
+---
+
 # Netzwerk
 
 <!--
