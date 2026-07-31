@@ -364,11 +364,11 @@ class HCSR04:
         time.sleep_us(10)
         self._trigger.value(0)
 
-        timeout_us = 2 * self._MAX_RANGE / self._SOUND_SPEED
+        timeout_us = int(2 * self._MAX_RANGE / self._SOUND_SPEED)
         pulse_time = machine.time_pulse_us(self._echo, 1, timeout_us)
-        assert pulse_time > 0
-
-        return pulse_time * self._SOUND_SPEED / 2
+        if pulse_time > 0:
+            return pulse_time * self._SOUND_SPEED / 2
+        return math.inf
 ```
 
 <!--
@@ -385,7 +385,7 @@ sensor = HCSR04(trigger_pin=5, echo_pin=6)
 
 while True:
     distance = sensor.distance_mm()
-    print(f"Abstand: {distance*10:.1f} cm")
+    print(f"Abstand: {distance/10:.1f} cm")
     time.sleep(1)
 ```
 
