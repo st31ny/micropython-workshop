@@ -520,18 +520,72 @@ while True:
 ## Display (1)
 
 - mit Display SSD1306
-- basierend auf I2C
+- basierend auf I2C mit Bibliothek `ssd1306`
 
-#TODO
+```py
+# ...
+i2c = I2C(0)
+oled_width = 128
+oled_height = 64
+oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+oled.text("Hallo Welt!", 0, 0)
+oled.text("Micropython", 0, 16)
+oled.text("Workshop", 0, 32)
+oled.text("2026", 0, 48)
+oled.show()
+```
+
+* **TODO**: zeige die aktuelle Temperatur auf dem Display an
 
 <!--
 Sprachkonstrukte:
-* Vererbung
 
 Hardware:
-* SPI
+* I2C mit mehreren Geräten
 * SSD1306
 -->
+
+---
+
+## Display (2)
+
+- Anzeige von Grafik mit Bibliothek `gfx`
+```py
+# ...
+graphics = gfx.GFX(oled_width, oled_height, oled.pixel)
+graphics.line(0, 0, 127, 20, 1) # Linie
+graphics.rect(10, 10, 50, 30, 1) # Rechteck (oder fill_rect())
+graphics.fill_circle(64, 32, 10, 1) # Kreis (oder circle())
+graphics.fill_triangle(84,32,90,45,100,40,1) # Dreieck (oder triangle())
+oled.show()
+```
+
+* **TODO**: lasse einen Kreis über das Display wandern
+* **Bonus**: verschiebe einen Kreis mit Ultraschall
+
+---
+
+## Display (3)
+
+```py
+# ...
+for i in range(0, oled_width+10, 4):
+    oled.fill(0)
+    graphics.fill_circle(i, 32, 10, 1)
+    oled.show()
+```
+
+* Dasselbe geht auch mit Text!
+* **TODO**: lasse einen Text über das Display wandern
+* **Bonus**: lasse den Text vertikal wandern
+
+---
+
+## Display (4)
+
+```py
+# ...
+
 
 ---
 

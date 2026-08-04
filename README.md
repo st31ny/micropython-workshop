@@ -28,6 +28,7 @@ Links
     * [Wassersensor](https://www.ebay.de/itm/376829936950)
     * [Display SSD1306 I2C/IIC](https://www.ebay.de/itm/177392745668)
         * [Bibliothek für das SSD1306](https://github.com/adafruit/micropython-adafruit-ssd1306/blob/master/ssd1306.py)
+        * [Bibliothek für Grafik](https://github.com/adafruit/micropython-adafruit-gfx/blob/master/gfx.py)
     * [Ultraschall HC-SR04](https://www.ebay.de/itm/185904806389)
     * [Radar RCWL-0516](https://www.ebay.de/itm/153308558247)
     * [Temperatur/Feuchtigkeit DHT-22](https://www.ebay.de/itm/317454484565)
