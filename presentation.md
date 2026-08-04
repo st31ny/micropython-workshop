@@ -217,9 +217,9 @@ pot.read_u16() # gib Wert (0..65536)
 # PWM mit 5 kHz auf Pin 8
 led = PWM(Pin(0), freq=5000)
 led.duty(512) # setze analogen Wert (0..1024)
-
-# TODO: Dimme LED mit Poti.
 ```
+
+* **TODO**: Dimme LED mit Poti
 
 <!--
 Sprachkonstrukte:
@@ -253,6 +253,15 @@ Sprachkonstrukte:
 * mathematische Operatoren
 * Casting, Datentypen
 -->
+
+---
+
+## Buzzer
+
+- kann mit PWM angesteuert werden
+- `buzz.duty()` setzt die Lautstärke
+- `buzz.freq()` setzt die Frequenz (=Tonhöhe)
+* **TODO**: stelle die Tonhöhe mit dem Potentiometer ein
 
 ---
 
@@ -326,6 +335,7 @@ class HCSR04:
 ```
 
 * **TODO**: Implementierung Klasse und sekündliche Ausgabe des Abstands
+* **Bonus**: steuere die Tonhöhe mit dem Abstand
 
 <!--
 Sprachkonstrukte:
