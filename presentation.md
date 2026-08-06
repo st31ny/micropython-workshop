@@ -4,32 +4,41 @@ theme: default
 class: invert
 ---
 
-# Einstieg in die Programmierung von Microcontrollern mit MicroPython
+# Programmierung von Embedded Systems mit MicroPython
 
 ---
 
 <!--
-header: Workshop MicroPython\n05.10.2024
+header: MicroPython
 paginate: true
 -->
 
 ## Agenda
 
-1. Universum und Toolchain
-1. Hello World
-— Pause —
-1. Sprachkonstrukte und Sensoren
-1. Netzwerk
-— Pause —
-1. Projekt
-1. Zusammenfassung
+1. Hello Universe
+1. Grundlagen Sprache und IO
+1. Digitale Sensoren und Aktoren
+1. Netzwerk und Kommunikation
+1. Projekt: Jetzt seid ihr am Zug!
+
+<!--
+Zeitplan:
+* Tag 1: Hello Universe, Grundlagen bis Radar
+* Tag 2: Rest Grundlagen außer Ultraschall
+* Tag 3: Ultraschall, Digitale Sensoren und Aktoren (DHT-22)
+* Tag 4: Digitale Sensoren und Aktoren (Rest)
+* Tag 5: Netzwerk und Kommunikation (WLAN), Projekt
+* Tag 6: Projekt
+-->
 
 ---
 
-# Universum und Toolchain
+# Hello Universe
+
+Begriffe, Werkzeuge, Hello World
 
 <!--
-footer: Universum und Toolchain
+header: MicroPython: Hello Universe
 -->
 
 ---
@@ -54,10 +63,10 @@ https://github.com/st31ny/micropython-workshop
     - Download unter https://thonny.org
 - ESP32-C3 SuperMini
     - dazu USB-Kabel, Sensoren, Breadboard
-- 3er Gruppen mit einem Laptop und einem Bausatz
+- 2er Gruppen oder allein mit einem Laptop und einem Bausatz
 
 <!--
-später: Messgerät, passende Sensoren, Lötkolben
+später: Messgerät, weitere Sensoren
 -->
 
 ---
@@ -68,7 +77,7 @@ später: Messgerät, passende Sensoren, Lötkolben
 - Rechner per USB mit Chip verbinden
 - Thonny starten
 - Ersteinrichtung für MicroPython:
-    - Extras > Optionen > Interpreter
+    - Werkzeuge > Optionen > Interpreter
     - Auswahl Interpreter: "MicroPython (ESP32)"
     - Auswahl Port
     - "OK"
@@ -90,13 +99,7 @@ später: Messgerät, passende Sensoren, Lötkolben
 
 ---
 
-# Hello World
-
-<!--
-footer: Hello World
--->
-
----
+## Hello World
 
 - Skriptbereich > Speichern > MicroPython device > "main.py"
 - Eingabe:
@@ -118,14 +121,13 @@ LED nochmal einzeln zeigen => Konzept Active Low vs. Active High
 
 ---
 
-# Pause
 
----
+# Grundlagen Sprache und IO
 
-# Sprachkonstrukte und Sensoren
+Buttons, LED, Radar, analoge Signale, Ultraschall
 
 <!--
-footer: Sprachkonstrukte und Sensoren
+header: MicroPython: Grundlagen Sprache und IO
 -->
 
 ---
@@ -156,16 +158,64 @@ Sprachkonstrukte:
 * If-Verzweigung (Bedingung, == Gleichheit)
 * Zuweisung
 
-Was ist ein Pull-Up/Down?
+Hardware:
+* Button
+* Was ist ein Pull-Up/Down?
 -->
 
 ---
 
-## Potentiometer und PWM (1)
+## Radar (1)
+
+- funktioniert wie ein Button
+- Anschlüsse beachten:
+  - VIN — 5 V
+  - GND — GND
+  - OUT — GPIO (kein Pull-Up nötig)
+  - andere Pins nicht belegen
+* **TODO**: LED soll genau dann leuchten, wenn eine Bewegung erkannt wird
+* **Bonus**: Text ausgeben, wenn der Zustand sich ändert
+
+<!--
+Hardware:
+* Radarsensor
+* 5 V Versorgung
+-->
+
+---
+
+## Radar (2)
+
+```py
+# ...
+led = machine.Pin(8, machine.Pin.OUT)
+sensor = machine.Pin(10, machine.Pin.IN)
+state = 0
+while True:
+    if sensor.value():
+        led.value(0)
+        if state == 0:
+            print("Bewegung erkannt!")
+            state = 1
+    else:
+        led.value(1)
+        if state == 1:
+            print("Bewegung gestoppt!")
+            state = 0
+    time.sleep(0.1)
+```
+
+---
+
+## Potentiometer und Pulsweitenmodulation (1)
 
 <!--
 interne Referenzspannung 1.1 V
 -->
+
+- Messung von analogen Signalen per ADC
+- Ausgabe von analogen Signalen per PWM
+
 ```py
 from machine import Pin, ADC, PWM
 from time import sleep
@@ -175,21 +225,24 @@ pot = ADC(Pin(2), atten=ADC.ATTN_11DB)
 pot.read_u16() # gib Wert (0..65536)
 
 # PWM mit 5 kHz auf Pin 8
-led = PWM(Pin(8), freq=5000)
+led = PWM(Pin(0), freq=5000)
 led.duty(512) # setze analogen Wert (0..1024)
-
-# TODO: Dimme LED mit Poti.
 ```
+
+* **TODO**: Dimme LED mit Poti
 
 <!--
 Sprachkonstrukte:
 * Kommentare
 * benannte Parameter
+
+Hardware:
+* LED mit Vorwiderstand
 -->
 
 ---
 
-## Potentiometer und PWM (2)
+## Potentiometer und Pulsweitenmodulation (2)
 
 ```py
 from machine import Pin, ADC, PWM
@@ -213,6 +266,15 @@ Sprachkonstrukte:
 
 ---
 
+## Buzzer
+
+- kann mit PWM angesteuert werden
+- `buzz.duty()` setzt die Lautstärke
+- `buzz.freq()` setzt die Frequenz (=Tonhöhe)
+* **TODO**: stelle die Tonhöhe mit dem Potentiometer ein
+
+---
+
 ## Wassersensor (1)
 
 - funktioniert wie ein Potentiometer
@@ -231,6 +293,9 @@ def alarm_blink(led):
 Sprachkonstrukte:
 * eigene Funktion
 * for-Schleife
+
+Hardware:
+* Wassersensor
 -->
 
 ---
@@ -263,6 +328,94 @@ Sprachkonstrukte:
 
 ---
 
+## Ultraschallsensor (1)
+
+- Messung Abstand (2 cm .. 4 m) mit Schallimpuls und Laufzeitmessung
+* Trigger-Pin als Ausgang: High-Impuls für 10 μs
+* Echo-Pin als Eingang: Messung mit `machine.time_pulse_us()`
+
+```py
+class HCSR04:
+    _SOUND_SPEED = 343.2
+    def __init__(self, trigger_pin, echo_pin):
+        self._trigger = Pin(trigger_pin, mode=Pin.OUT)
+    def distance_mm(self):
+        # ...
+        return 42
+```
+
+* **TODO**: Implementierung Klasse und sekündliche Ausgabe des Abstands
+* **Bonus**: steuere die Tonhöhe mit dem Abstand
+
+<!--
+Sprachkonstrukte:
+* Klassen
+* Zeitmessung
+
+Hardware:
+* Ultraschall
+-->
+
+---
+
+## Ultraschallsensor (2)
+
+```py
+# ...
+class HCSR04:
+    _SOUND_SPEED = 0.34320 # mm/μs
+    _MAX_RANGE = 4000 # mm
+
+    def __init__(self, trigger_pin, echo_pin):
+        self._trigger = machine.Pin(trigger_pin, machine.Pin.OUT)
+        self._trigger.value(0)
+        self._echo = machine.Pin(echo_pin, machine.Pin.IN)
+
+    def distance_mm(self):
+        self._trigger.value(0)
+        time.sleep_us(5)
+
+        self._trigger.value(1)
+        time.sleep_us(10)
+        self._trigger.value(0)
+
+        timeout_us = int(2 * self._MAX_RANGE / self._SOUND_SPEED)
+        pulse_time = machine.time_pulse_us(self._echo, 1, timeout_us)
+        if pulse_time > 0:
+            return pulse_time * self._SOUND_SPEED / 2
+        return math.inf
+```
+
+<!--
+_footer: ""
+-->
+
+---
+
+## Ultraschallsensor (3)
+
+```py
+# ...
+sensor = HCSR04(trigger_pin=5, echo_pin=6)
+
+while True:
+    distance = sensor.distance_mm()
+    print(f"Abstand: {distance/10:.1f} cm")
+    time.sleep(1)
+```
+
+---
+
+# Digitale Sensoren und Aktoren
+
+Temperatur, Luftfeuchtigkeit, Luftdruck, Display
+
+<!--
+header: MicroPython: Digitale Sensoren und Aktoren
+-->
+
+---
+
 ## Temperatur und Luftfeuchtigkeit (1)
 
 - mit Sensor DHT-22
@@ -281,6 +434,11 @@ hum = sensor.humidity()
 
 * **TODO**: lese Temperatur und Luftfeuchtigkeit in einer Funktion und gib beides "hübsch" aus
 * Hinweis: Funktionen können (mehrere) Rückgabewerte haben
+
+<!--
+Hardware:
+* DHT-22 und Familie
+-->
 
 ---
 
@@ -306,10 +464,139 @@ Sprachkonstrukte:
 
 ---
 
-# Netzwerk
+## Temperatur, Luftdruck und Höhe (1)
+
+- mit Sensor BMP-280
+- basierend auf I2C
+
+```py
+import machine
+
+i2c = machine.I2C(0)
+i2c.scan()
+i2c.readfrom(118, 240)
+```
 
 <!--
-footer: Netzwerk
+Sprachkonstrukte:
+* externe Bibliothek
+
+Hardware:
+* I2C
+* BMP280
+-->
+
+---
+
+## Temperatur, Luftdruck und Höhe (2)
+
+- Berechnung etwas komplex -> extra Bibliothek
+
+```py
+# ...
+import bme280
+sensor = bme280.BME280(i2c=i2c)
+
+while True:
+    print(f"Temperatur: {sensor.temperature}\nDruck: {sensor.pressure}")
+    time.sleep(2)
+```
+
+* **TODO**: berechne die Höhe über dem Meer
+* Hinweis 1: `sensor.read_pressure()` gibt den Druck in Pascal
+* Hinweis 2: nutze die Barometrische Höhenformel bzw. Internationale Höhenformel
+
+---
+
+## Temperatur, Luftdruck und Höhe (3)
+
+```py
+# ...
+def altitude(temp, pres):
+    t = 273.15 + temp
+    p0 = 1013.25
+    return t/0.0065*(1-(pres/p0)**(1/5.255))
+
+while True:
+    t = sensor.read_temperature() / 100
+    p = sensor.read_pressure() / 256 / 100
+    alt = altitude(t, p)
+    print(f"Temperatur: {t:.1f} °C\nDruck: {p:.1f} hPa\nHöhe: {alt:.1f} m")
+    time.sleep(2)
+```
+
+---
+
+## Display (1)
+
+- mit Display SSD1306
+- basierend auf I2C mit Bibliothek `ssd1306`
+
+```py
+# ...
+i2c = I2C(0)
+oled_width = 128
+oled_height = 64
+oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+oled.text("Hallo Welt!", 0, 0)
+oled.text("Micropython", 0, 16)
+oled.text("Workshop", 0, 32)
+oled.text("2026", 0, 48)
+oled.show()
+```
+
+* **TODO**: zeige die aktuelle Temperatur auf dem Display an
+
+<!--
+Sprachkonstrukte:
+
+Hardware:
+* I2C mit mehreren Geräten
+* SSD1306
+-->
+
+---
+
+## Display (2)
+
+- Anzeige von Grafik mit Bibliothek `gfx`
+```py
+# ...
+graphics = gfx.GFX(oled_width, oled_height, oled.pixel)
+graphics.line(0, 0, 127, 20, 1) # Linie
+graphics.rect(10, 10, 50, 30, 1) # Rechteck (oder fill_rect())
+graphics.fill_circle(64, 32, 10, 1) # Kreis (oder circle())
+graphics.fill_triangle(84,32,90,45,100,40,1) # Dreieck (oder triangle())
+oled.show()
+```
+
+* **TODO**: lasse einen Kreis über das Display wandern
+* **Bonus**: verschiebe einen Kreis mit Ultraschall
+
+---
+
+## Display (3)
+
+```py
+# ...
+for i in range(0, oled_width+10, 4):
+    oled.fill(0)
+    graphics.fill_circle(i, 32, 10, 1)
+    oled.show()
+```
+
+* Dasselbe geht auch mit Text!
+* **TODO**: lasse einen Text über das Display wandern
+* **Bonus**: lasse den Text vertikal wandern
+
+---
+
+# Netzwerk und Kommunikation
+
+WiFi, Bluetooth, API, Webserver
+
+<!--
+header: MicroPython: Netzwerk und Kommunikation
 -->
 
 ---
@@ -371,43 +658,24 @@ if r.status_code == 200:
 
 ---
 
-# Pause
+# Projekt: Jetzt seid ihr am Zug!
 
----
-
-# Projekt
+Lasst eurer Kreativität freien Lauf!
 
 <!--
-footer: Projekt
+header: MicroPython: Projekt: Jetzt seid ihr am Zug!
 -->
 
 ---
 
 ## Aufgabe
 
-Ein Wassorsensor und eine Luftfeuchtesensor sollen überwacht werden. Wenn der Wassersensor Wasser detektiert oder die Luftfeuchtigkeit auf über 70 % steigt, soll ein App-Alarm ausgelöst werden.
+#TODO
 
 ---
 
-# Zusammenfassung
+# The End
 
 <!--
-footer: Zusammenfassung
--->
-
----
-
-## Zusammenfassung
-
-- flache Lernkurve
-- Code schnell ausprobieren
-- Vielzahl an Sensoren
-- Integration in andere Systeme
-
----
-
-# Vielen Dank
-
-<!--
-footer:
+header: MicroPython
 -->
