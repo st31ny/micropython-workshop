@@ -581,14 +581,6 @@ for i in range(0, oled_width+10, 4):
 
 ---
 
-## Display (4)
-
-```py
-# ...
-
-
----
-
 # Netzwerk und Kommunikation
 
 WiFi, Bluetooth, API, Webserver
