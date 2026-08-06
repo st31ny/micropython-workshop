@@ -21,6 +21,16 @@ paginate: true
 1. Netzwerk und Kommunikation
 1. Projekt: Jetzt seid ihr am Zug!
 
+<!--
+Zeitplan:
+* Tag 1: Hello Universe, Grundlagen bis Radar
+* Tag 2: Rest Grundlagen außer Ultraschall
+* Tag 3: Ultraschall, Digitale Sensoren und Aktoren (DHT-22)
+* Tag 4: Digitale Sensoren und Aktoren (Rest)
+* Tag 5: Netzwerk und Kommunikation (WLAN), Projekt
+* Tag 6: Projekt
+-->
+
 ---
 
 # Hello Universe
